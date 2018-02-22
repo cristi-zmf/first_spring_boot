@@ -26,6 +26,12 @@ public class Book {
         this.description = book.description;
     }
 
+    public static Book newBook(String reader, String isbn, String author, String description) {
+        Book book = new Book();
+        book.description = description;
+        return book;
+    }
+
     private Book() {
     }
 
