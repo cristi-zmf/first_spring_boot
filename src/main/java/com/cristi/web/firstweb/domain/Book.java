@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import static java.lang.String.format;
 import static javax.persistence.AccessType.FIELD;
 
 @Entity
@@ -60,7 +61,10 @@ public class Book implements Validable<Book> {
             return id.equals(otherBook.id);
         }
     }
-
+    @Override
+    public String toString() {
+        return format("[%s: %s]", Book.class.getSimpleName(), id);
+    }
     public String getReader() {
         return reader;
     }
