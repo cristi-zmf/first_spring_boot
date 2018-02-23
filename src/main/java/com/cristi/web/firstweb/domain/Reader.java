@@ -17,6 +17,18 @@ public class Reader {
     private Reader() {
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public Reader(String username, String fullname, String password) {
         this.username = username;
         this.fullname = fullname;

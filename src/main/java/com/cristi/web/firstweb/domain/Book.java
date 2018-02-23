@@ -1,20 +1,23 @@
 package com.cristi.web.firstweb.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import static javax.persistence.AccessType.FIELD;
 
 @Entity
 @Access(FIELD)
-public class Book {
+public class Book implements Validable<Book> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String reader;
+    @NotNull private Long id;
+    @NotBlank private String reader;
     private String isbn;
-    private String title;
-    private String author;
+    @NotBlank private String title;
+    @NotBlank private String author;
     private String description;
 
     public Book(String reader, Book book) {
@@ -26,10 +29,18 @@ public class Book {
         this.description = book.description;
     }
 
-    public static Book newBook(String reader, String isbn, String author, String description) {
-        Book book = new Book();
-        book.description = description;
-        return book;
+    private Book(Long id, String reader, String isbn, String title, String author, String description) {
+        this.id = id;
+        this.reader = reader;
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        validate(this);
+    }
+
+    public static Book newBook(Long id, String reader, String isbn, String title, String author, String description) {
+        return new Book(id, reader, isbn, title, author, description);
     }
 
     private Book() {
