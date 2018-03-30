@@ -4,18 +4,23 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.persistence.EntityManager;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SdjBooksLocalIT {
+@ActiveProfiles("H2")
+public class OrmLocalIT {
 
-    @Autowired private SdjBooks sut;
-    @Autowired private BooksSdj sdj;
-
+    @Autowired
+    EntityManager em;
 
     @Test
-    public void add_should_persist_correctly_the_entity() {
-
+    public void entity_manager_should_load() {
+        assertThat(em).isNotNull();
     }
 }

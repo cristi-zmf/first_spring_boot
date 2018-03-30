@@ -1,6 +1,7 @@
 package com.cristi.web.firstweb.domain;
 
 import javax.persistence.Access;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,6 +12,7 @@ import static javax.persistence.AccessType.FIELD;
 public class Reader {
     @Id
     private String username;
+    @Column(name = "FULL_NAME")
     private String fullname;
     private String password;
 

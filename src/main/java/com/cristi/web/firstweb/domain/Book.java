@@ -19,6 +19,7 @@ public class Book implements Validable<Book> {
     private String isbn;
     @NotBlank private String title;
     @NotBlank private String author;
+
     private String description;
 
     public Book(String reader, Book book) {
